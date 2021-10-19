@@ -18,10 +18,10 @@ I am working on the code with the names as values I set in order to test it
 before changing the values to user input statements
 '''          
 
-consonant = ["bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"]
-vowel = ["aeiouAEIOU"]
+consonant = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+vowel = "aeiouAEIOU"
 
-name_1 = "Korra"
+name_1 = "Korrza"
 name_2 = "Asami"
 
 #it had been printing the intended output prior to this morning, although it was printing it twice.
@@ -31,6 +31,17 @@ for i, character in enumerate(name_1):
     if i != 0:
         if character in consonant:
             name_1 = name_1[0:i+1]
-            print(name_1)  
+            print(f'on character {character}, name: {name_1}')
             
+for i, character in enumerate(name_2):
+    if i != 0:
+        if character in consonant:
+            name_1 = name_1[0:i+1]
+            print(f'on character {character}, name: {name_1}')
+            
+
+def imafunction(athingToDoStuffTo):
+    
+    return athingToDoStuffTo
+
 
