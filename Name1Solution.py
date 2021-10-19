@@ -12,18 +12,54 @@ DEBUG: bool = False
 
 # Set Unit Test
 # I am not sure if you have done dicts yet, but this would usually be a list of dicts in the form of the following.
-unit_tests: list[dict] = [
+first_name_unit_tests_dict: list[dict] = [
     {
         "testname": "First Name process",
         "test_content": "Korra",
         "expected_return": "K",
         "expect_error": False
-    }
+    },
+    {
+        "testname": "One letter",
+        "test_content": "Z",
+        "expected_return": "",
+        "expect_error": False
+    },
+    {
+        "testname": "No consonants after the first letter",
+        "test_content": "Poaeeoau",
+        "expected_return": "",
+        "expect_error": False
+    },
+    {
+        "testname": "Empty string",
+        "test_content": "",
+        "expected_return": "",
+        "expect_error": False
+    },
+    {
+        "testname": "No Consonants at all",
+        "test_content": "ooaaeeiio",
+        "expected_return": "",
+        "expect_error": False
+    },
+    {
+        "testname": "Two letters, no vowels",
+        "test_content": "JP",
+        "expected_return": "JP",
+        "expect_error": False
+    },
+    {
+        "testname": "First Name process standard",
+        "test_content": "Aaron",
+        "expected_return": "Aar",
+        "expect_error": False
+    },
 ]
 
-# Im going to proceed with this method though.  Just a list of the test content.
+## Unit tests in list form
 # Did you get instrunction on what to print in case of an edge case.  I am assuming just print a blank line which is what i have done.
-first_name_test_cases: list[str] = [
+first_name_unit_tests_list: list[str] = [
     "Korra",  # Expect: Kor,
     "Z",  # Expect: '', edge case, only 1 char.
     "Poaeeoau",  # Expect: '', edge case no subsequent consonants
@@ -47,14 +83,22 @@ def matching_to_first_consonent(n: str) -> str:
             return n[0:c[0]+1]
     return err_val
 
+# Running the tests using the list method.
+# for test in first_name_unit_tests_list:
+#     print(matching_to_first_consonent(test))
 
-# This is how you can run all of your test cases.
-for test in first_name_test_cases:
-    print(matching_to_first_consonent(test))
-
-
-# second_name:str = "Asami"
-
-
-# def parse_second_name(n: str)-> str:
-#     return("done second")
+# Run the tests using the dict.  Using this method you can automaically check the results.  
+# Can have thousands of tests in here and only look at a result where result != expected result.
+# Here is an element of the list of dicts.
+    # {
+    #     "testname": "No consonants after the first letter",
+    #     "test_content": "Poaeeoau",
+    #     "expected_return": "",
+    #     "expect_error": False
+    # },
+# for test in first_name_unit_tests_dict:
+#     print(matching_to_first_consonent(test["test_content"]))
+for test in first_name_unit_tests_dict:
+    content: str = test["test_content"] # looks like a bug in the linter for type hinting.
+    print(f'test {test["testname"]} - success: {test["expected_return"] == matching_to_first_consonent(content)}. Returned result of {matching_to_first_consonent(content)} compared to expectation of {test["expected_return"]}.')
+    #print(matching_to_first_consonent(content))
